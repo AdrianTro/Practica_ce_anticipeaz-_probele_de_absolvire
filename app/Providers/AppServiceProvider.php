@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Blade;
 use Illuminate\Session\Store as SessionStore;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -18,6 +19,9 @@ class AppServiceProvider extends ServiceProvider
 
     public function boot(): void
     {
+        if (app()->environment('production')) {
+            URL::forceScheme('https');
+        }
         if (! SessionStore::hasMacro('boolean')) {
             SessionStore::macro('boolean', function (string $key, bool $default = false): bool {
                 return filter_var($this->get($key, $default), FILTER_VALIDATE_BOOLEAN);
