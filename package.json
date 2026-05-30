@@ -1,0 +1,9 @@
+{
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "echo 'Nu este necesar build frontend. CSS si JS sunt in public/css si public/js.'",
+    "build": "echo 'Nu este necesar build frontend. CSS si JS sunt in public/css si public/js.'"
+  },
+  "devDependencies": {}
+}
